@@ -1,4 +1,4 @@
-# flights
+# Programming Project - Group 8
 This is the Repo for our first year Programming Project.
 
 Team Members:
