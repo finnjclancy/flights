@@ -1,2 +1,8 @@
 # flights
-This is the Repo for our first yaer Programming Project final project.
+This is the Repo for our first year Programming Project.
+
+Team Members:
+Ionut George Adadi
+Finn Clancy
+Robin Schulz
+Tomas Audejaitis
