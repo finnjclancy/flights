@@ -7,45 +7,51 @@ PrintWriter output;
 
 void settings()
 {
-  //size(SCREENX, SCREENY);
+  // size(SCREENX, SCREENY);
 }
 
 void setup() {
     frameRate(1);
     output = createWriter("txtcopy.txt");
-
 }
 
-
 void draw() {
+  // GIVEN FILE
   String[] lines = loadStrings("flights2k(1).csv");
+  
+  // DIMENSIONS OF 2D ARRAY
   String splitLine[] = lines[1].split(",");
+  int COLUMNS  = splitLine.length;
+  int ROWS = lines.length;
+  String linesSplit[][] = new String[ROWS][COLUMNS];
   
-  int numOfColoumns  = splitLine.length;
-  int numOfRows = lines.length;
-  
-  String linesSplit[][] = new String[lines.length][splitLine.length];
-  println("there are " + lines.length + " lines.");
-  
+  // CONVERT FILE INTO 2D ARRAY
+  // ROW INDEX REPRESENTS THE FLIGHTS
+  // COLUMN INDEX REPRESENTS THE ELEMENTS OF THE FLIGHT
   for(int rowIndex = 1; rowIndex < lines.length; rowIndex++)
   {
     String tmpSplitLine[] = lines[rowIndex].split(",");
-    for(int coloumnIndex = 0; coloumnIndex < splitLine.length; coloumnIndex++)
+    
+    for(int columnIndex = 0; columnIndex < splitLine.length; columnIndex++)
     {
-      linesSplit[rowIndex][coloumnIndex] = tmpSplitLine[coloumnIndex];
+      linesSplit[rowIndex][columnIndex] = tmpSplitLine[columnIndex];
     }
   }
   
-  for(int rowIndex = 1; rowIndex < linesSplit.length; rowIndex++)
+  // CHANGE THE INPUT TEXT FILE TO READ FLIGHT INFORMATION
+  for (int rowIndex = 0; rowIndex < ROWS; rowIndex++)
   {
-    for(int coloumnIndex = 0; coloumnIndex < numOfColoumns; coloumnIndex++)
+    output.println("NUMBER " + rowIndex + ", " + lines[rowIndex]);
+    if (rowIndex % 10 == 0)
     {
-      output.println(linesSplit[rowIndex][coloumnIndex]);
+      output.println("-------");
     }
-    output.println("------------------------------------");
   }
   
-  output.flush(); // Writes the remaining data to the file
-  output.close(); // Finishes the file
-  exit(); // Stops the program
+  // CLEAR AND CLOSE FILE
+  output.flush(); 
+  output.close(); 
+  
+  // STOP THE PROGRAM
+  exit();
 }
