@@ -9,9 +9,3 @@
   {
     System.out.println(linesSplit[i][0]);
   } */
-  
-  // void drawBarChar(String[] airports, int[] values)
-  //{
-  //  highestNumber = max(values);
-  //  highestNumber = ((highestNumber / 10) + 1) * 10;
-  //}
