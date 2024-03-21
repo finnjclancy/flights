@@ -14,9 +14,13 @@ class Airport {
   String nameOfAirport;
   ArrayList<Airport> orgPorts = new ArrayList<>();
   ArrayList<Airport> destPorts = new ArrayList<>();
+  ArrayList<Airport> returnedAirports = new ArrayList<>();
   String flightList[][];
   int highestNumber = 0;
   String[] yAxis;
+  boolean programRunning = true;
+  boolean secondLoop = true;
+
 
   Airport(String flightList[][])
   {
@@ -91,7 +95,7 @@ class Airport {
         runningTotal += temp.numOfOcc;
       }
       println(runningTotal);
-      println(highestNumber);
+    //  println(highestNumber);
       return destPorts;
 
     case 2:
@@ -151,7 +155,7 @@ class Airport {
         runningTotal += temp.numOfOcc;
       }
       println(runningTotal);
-      println(highestNumber);
+     // println(highestNumber);
       return orgPorts;
 
     default:
@@ -204,7 +208,7 @@ class Airport {
       float x = index * barWidth;
       float y = height - barHeight; // Invert y-coordinate to draw from bottom
       stroke(255,0,0);
-      //fill(random(255),random(255),random(255));
+      fill(255);
       rect(x+50, y-50, barWidth, barHeight);
       fill(255);
       text(tempArray.get(index).nameOfAirport, x+40 + barWidth / 2, height - 20);
@@ -244,12 +248,12 @@ class Airport {
         //  text(yAxis[index], 15, ((SCREENY - 50) + (index / (yAxis.length - 1))) * (SCREENY - 100));
         //}
       
-        text(yAxis[index], 15, (startingYPos - (index*intervalyAxis)));
+       text(yAxis[index], 15, (startingYPos - (index*intervalyAxis)));
        line(30, (startingYPos - (index*intervalyAxis)) - 4, 35, (startingYPos - (index*intervalyAxis)) - 4);
+   
     }
-    
-    
-    
+    highestNumber = 0;
+    maxValue = 0;
   }
 
   int findMaxValue(ArrayList<Airport> tempArray)
@@ -283,4 +287,33 @@ class Airport {
     
     
   }
+
+  
+  void draw()
+  {
+    if (airGo == true)
+    {
+      if(programRunning)  // this if statement ensures that these functions are only called once and the program exits after one iteration of the draw method
+      {
+        if (secondLoop == true)
+        {
+           returnedAirports = this.findFlight("LAX", 1); // This is the origin airport 
+        }
+        //ArrayList<Airport> returnedAirports = this.findFlight("LAX", 2); // This is the destination airport 
+        //this.findFlight("SFO", "JFK");
+        drawBarChart(returnedAirports);
+        programRunning = false;
+      }
+       
+      //println("AIRGO IS A GO");
+      //println("In Airdraw(): mainGo = " + mainGo + ", airGo = " + airGo);
+    }
+  }
 }
+
+
+
+/*
+ Within this there will be two subpages that check if the user wants to input
+ only the desitnation, only the departure or both.
+ */
