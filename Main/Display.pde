@@ -9,3 +9,21 @@
   {
     System.out.println(linesSplit[i][0]);
   } */
+  //int highestNumber;
+  
+  //void drawBarChar(String[] airports, int[] values)
+  //{
+  //  // MAX VALUE OF Y-AXIS
+  //  highestNumber = max(values);
+  //  highestNumber = ((highestNumber / 10) + 1) * 10;
+    
+  //  // ARRAY OF OTHER VALUES
+  //  int[] yAxis = new int[(highestNumber / 5) + 1];
+    
+  //  for(int label = 0; label < yAxis.length; label++)
+  //  {
+  //      yAxis[label] = label * 5; 
+  //  }
+    
+    
+  //}
